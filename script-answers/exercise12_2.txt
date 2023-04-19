@@ -1,0 +1,11 @@
+Script started on 2023-04-14 09:23:15+03:00 [TERM="xterm-256color" TTY="/dev/pts/5" COLUMNS="203" LINES="50"]
+[?2004h]0;robert@ubbe: ~/part12-containers-applications[01;32mrobert@ubbe[00m:[01;34m~/part12-containers-applications[00m$ sudo docker run -it ubuntu bash
+[?2004l[sudo] password for robert: 
+[?2004h]0;root@911b32134d87: /root@911b32134d87:/# mkdir /usr/src/app
+[?2004l[?2004h]0;root@911b32134d87: /root@911b32134d87:/# touch /usr/src/app/index.js
+[?2004l[?2004h]0;root@911b32134d87: /root@911b32134d87:/# [Kexit
+[?2004lexit
+[?2004h]0;robert@ubbe: ~/part12-containers-applications[01;32mrobert@ubbe[00m:[01;34m~/part12-containers-applications[00m$ exit
+[?2004lexit
+
+Script done on 2023-04-14 09:23:59+03:00 [COMMAND_EXIT_CODE="0"]

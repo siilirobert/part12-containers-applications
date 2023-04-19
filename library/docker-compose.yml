@@ -1,0 +1,17 @@
+services:
+  app:
+    image: library-front
+    build: .
+    volumes:
+      - ./library-frontend:/usr/src/app
+    container_name: library-front
+    ports:
+      - 3000:80
+  server:
+    image: library-back
+    build: .
+    volumes:
+      - ./library-backend:/usr/src/app
+    container_name: library-back
+    ports:
+      - 4000:4000

@@ -1,0 +1,93 @@
+Script started on 2023-04-14 15:20:55+03:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="203" LINES="47"]
+[?2004h]0;robert@ubbe: ~/part12-containers-applications[01;32mrobert@ubbe[00m:[01;34m~/part12-containers-applications[00m$ docker ps
+[?2004lCONTAINER ID   IMAGE     COMMAND                  CREATED       STATUS       PORTS                                         NAMES
+4029ca12bb18   mongo     "docker-entrypoint.s…"   3 hours ago   Up 3 hours   0.0.0.0:3456->27017/tcp, :::3456->27017/tcp   todo-backend-mongo-1
+[?2004h]0;robert@ubbe: ~/part12-containers-applications[01;32mrobert@ubbe[00m:[01;34m~/part12-containers-applications[00m$ docker exec -it todo-backend-mongo-1 bash
+[?2004l[?2004hroot@4029ca12bb18:/# mongosh -u root -p w example
+[?2004l]0;mongosh mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000Current Mongosh Log ID:	6439453c155526a9b8a94d2a
+Connecting to:		[1m[32mmongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0[0m
+Using MongoDB:		6.0.5
+[1m[33mUsing Mongosh[0m:		1.8.0
+
+For mongosh info see: [1mhttps://docs.mongodb.com/mongodb-shell/[0m
+
+[1G[0J [1G[1m[33m------[0m
+   [1m[33mThe server generated these startup warnings when booting[0m
+   2023-04-14T09:23:03.116+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2023-04-14T09:23:03.645+00:00: vm.max_map_count is too low
+[1m[33m------[0m
+
+[1m[33m------[0m
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+   
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+   
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+[1m[33m------[0m
+
+[1G[0Jtest> [7Gshow dbs
+[1madmin[0m         100.00 KiB
+[1mconfig[0m         72.00 KiB
+[1mlocal[0m          72.00 KiB
+[1mthe_database[0m   72.00 KiB
+[1G[0Jtest> [7Guse the_database
+switched to db the_database
+[1G[0Jthe_database> [15Gshow collections
+[1mtodos[0m
+[1G[0Jthe_database> [15Gd.[1G[0Jthe_database> d[16Gb.todos.find([[1G[0Jthe_database> db.todos.find([29G{})
+[
+  {
+    _id: ObjectId("64391b7640380c6497f94835"),
+    text: [32m'Write code ---- EDIT'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId("64391b7640380c6497f94836"),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId("643944464e50e84dd95ad24b"),
+    text: [32m'Increase the number of tools in my toolbelt'[39m,
+    done: [33mfalse[39m
+  }
+]
+[1G[0Jthe_database> [15Gd.todos[1G[0Jthe_database> d.todo[21G[1G[0Jthe_database> d.tod[20G[1G[0Jthe_database> d.to[19G[1G[0Jthe_database> d.t[18G[1G[0Jthe_database> d.[17G[1G[0Jthe_database> d[16Gb.todos.insertOne({t[1G[0Jthe_database> db.todos.insertOne({[35G text[33mtext[39m: [32m'[39m[32mA[39m[32mn[39m[32mo[39m[32mt[39m[32mh[39m[32me[39m[32mr[39m [32mt[39m[32mr[39m[32my[39m [32mb[39m[32me[39m[32mc[39m[32ma[39m[32mu[39m[32ms[39m[32me[39m [32ms[39m[32mc[39m[32mr[39m[32mi[39m[32mp[39m[32mt[39m [32mg[39m[32mo[39m[32mt[39m [32mm[39m[32me[39m[32ms[39m[32ms[39m[32me[39m[32md[39m [32mu[39m[32mp[39m [32ml[39m[32ma[39m[32ms[39m[32mt[39m [32mt[39m[32mi[39m[32mm[39m[32me[39m[32m'[39m, d[36mdo[39mdone[33mdone[39m: fals[33mfalse[39m })
+{
+  acknowledged: [33mtrue[39m,
+  insertedId: ObjectId("64394578f4631a5647f8ceae")
+}
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.todos.insertOne({ [33mtext[39m: [32m'Another try because script got messed up last time'[39m, [33mdone[39m: [33mfalse[39m })[110G[1G[0Jthe_database> db.todos.find({})[32G
+[
+  {
+    _id: ObjectId("64391b7640380c6497f94835"),
+    text: [32m'Write code ---- EDIT'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId("64391b7640380c6497f94836"),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId("643944464e50e84dd95ad24b"),
+    text: [32m'Increase the number of tools in my toolbelt'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId("64394578f4631a5647f8ceae"),
+    text: [32m'Another try because script got messed up last time'[39m,
+    done: [33mfalse[39m
+  }
+]
+[1G[0Jthe_database> [15Gexit
+[?2004hroot@4029ca12bb18:/# exit
+[?2004lexit
+[?2004h]0;robert@ubbe: ~/part12-containers-applications[01;32mrobert@ubbe[00m:[01;34m~/part12-containers-applications[00m$ exit
+[?2004lexit
+
+Script done on 2023-04-14 15:22:33+03:00 [COMMAND_EXIT_CODE="0"]

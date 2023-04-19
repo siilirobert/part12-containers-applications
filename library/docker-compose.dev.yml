@@ -1,0 +1,21 @@
+services:
+  app:
+    image: library-front-dev
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./library-frontend:/usr/src/app
+    container_name: library-front-dev
+    ports:
+      - 3000:3000
+  server:
+    image: library-back-dev
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./library-backend:/usr/src/app
+    container_name: library-back-dev
+    ports:
+      - 4000:4000
